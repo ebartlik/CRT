@@ -33,7 +33,7 @@ Entering A Lead
     VerifyText                Manager
     VerifyText                Growmore
 
-    ClickText                 Opportunities
+    ClickText                 Opportunity
 
 Converting A Lead To Opportunity-Account-Contact
     [tags]                    Lead
