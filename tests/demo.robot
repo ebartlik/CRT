@@ -11,11 +11,5 @@ Demo Test
     Appstate                  salesforce.Login
     VerifyText                Home
     ClickText                 Leads
-
-    ClickText    New
-    TypeText    First Name    Evan
-    TypeText    Last Name    Bartlik
-    Typetext    Company      Copado
-
-    ClickText                Save    
+   
     
