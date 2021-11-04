@@ -35,6 +35,7 @@ Entering A Lead
 
     ClickText                 Opportunity
 
+
 Converting A Lead To Opportunity-Account-Contact
     [tags]                    Lead
     Appstate                  salesforce.Home
