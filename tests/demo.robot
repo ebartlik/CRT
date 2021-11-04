@@ -10,6 +10,6 @@ Demo Test
                       
     Appstate                  salesforce.Login
     VerifyText                Home
-    ClickText                 Lead
+    ClickText                 Leads
    
     
