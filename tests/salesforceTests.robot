@@ -8,7 +8,7 @@ Suite Teardown                End suite
 *** Test Cases ***
 Entering A Lead
     [tags]                    Lead
-    Appstate                  salesforce.Home
+    Appstate                  Home
     VerifyText                Home
     salesforce.LaunchApp      Sales
 
@@ -33,7 +33,7 @@ Entering A Lead
     VerifyText                Manager
     VerifyText                Growmore
 
-    ClickText                 Opportunity
+    ClickText         Opportunities
 
 
 Converting A Lead To Opportunity-Account-Contact
