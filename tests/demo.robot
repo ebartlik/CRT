@@ -12,6 +12,11 @@ Demo Test
     VerifyText                Home
     ClickText                 Leads
 
+    ClickText    New
+    TypeText    First Name    Evan
+
+    ClickText                 Cancel
+
 
 
     
