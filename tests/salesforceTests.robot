@@ -10,30 +10,30 @@ Entering A Lead
     [tags]                    Lead
     Appstate                  Home
     VerifyText                Home
-    salesforce.LaunchApp      Sales
+    LaunchApp                 Sales
 
     ClickUntil                Recently Viewed             Leads
     ClickUntil                Lead Information            New
 
-    salesforce.Picklist       Salutation                  Ms.
+    Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
-    salesforce.Picklist       Lead Status                 New
+    Picklist                  Lead Status                 New
     TypeText                  Phone                       +12234567858449             First Name
     TypeText                  Company                     Growmore                    Last Name
     TypeText                  Title                       Manager                     Address Information
     TypeText                  Email                       tina.smith@gmail.com        Rating
     TypeText                  Website                     https://www.growmore.com/
 
-    salesforce.Picklist       Lead Source                 Partner
-    ClickText                 Save                        partial_match=False
+    Picklist                  Lead Source                 Partner
+    ClickText                 Save                        2
     Sleep                     1
     ClickText                 Leads
     VerifyText                Tina Smith
     VerifyText                Manager
     VerifyText                Growmore
 
-    ClickText         Opportunities
+    
 
 
 Converting A Lead To Opportunity-Account-Contact
