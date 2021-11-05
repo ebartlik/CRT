@@ -1,6 +1,5 @@
 *** Settings ***
 Resource                      ../resources/common.robot
-Resource                      ../resources/salesforce.robot
 Suite Setup                   Setup Browser
 Suite Teardown                End suite
 
@@ -8,17 +7,18 @@ Suite Teardown                End suite
 *** Test Cases ***
 Entering A Lead
     [tags]                    Lead
-    Appstate                  Home
+    Appstate                  Login
     VerifyText                Home
     LaunchApp                 Sales
 
     ClickUntil                Recently Viewed             Leads
     ClickUntil                Lead Information            New
+    UseModal                  On                          # Only find fields from open modal dialog
 
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
-    Picklist                  Lead Status                 New
+    Picklist                  Lead Status                 Open
     TypeText                  Phone                       +12234567858449             First Name
     TypeText                  Company                     Growmore                    Last Name
     TypeText                  Title                       Manager                     Address Information
@@ -26,20 +26,27 @@ Entering A Lead
     TypeText                  Website                     https://www.growmore.com/
 
     Picklist                  Lead Source                 Partner
-    ClickText                 Save                        2
+    ClickText                 Save                        partial_match=False
+    UseModal                  Off
     Sleep                     1
+    
+    ClickText                 Details
+    VerifyField               Name                        Ms. Tina Smith
+    VerifyField               Lead Status                 Open
+    VerifyField               Phone                       +12234567858449
+    VerifyField               Company                     Growmore
+    VerifyField               Website                     https://www.growmore.com/
+
     ClickText                 Leads
     VerifyText                Tina Smith
     VerifyText                Manager
     VerifyText                Growmore
 
-    
-
 
 Converting A Lead To Opportunity-Account-Contact
     [tags]                    Lead
-    Appstate                  salesforce.Home
-    salesforce.LaunchApp      Sales
+    Appstate                  Home
+    LaunchApp                 Sales
 
     ClickUntil                Recently Viewed             Leads
     ClickText                 Tina Smith
@@ -60,8 +67,8 @@ Converting A Lead To Opportunity-Account-Contact
 
 Creating An Account
     [tags]                    Account
-    Appstate                  salesforce.Home
-    salesforce.LaunchApp      Sales
+    Appstate                  Home
+    LaunchApp                 Sales
 
     ClickUntil                Recently Viewed             Accounts
     ClickUntil                Account Information         New
@@ -70,8 +77,8 @@ Creating An Account
     TypeText                  Phone                       +12258443456789             anchor=Fax
     TypeText                  Fax                         +12258443456766
     TypeText                  Website                     https://www.salesforce.com
-    salesforce.Picklist       Type                        Partner
-    salesforce.Picklist       Industry                    Finance
+    Picklist                  Type                        Partner
+    Picklist                  Industry                    Finance
 
     TypeText                  Employees                   35000
     TypeText                  Annual Revenue              12 billion
@@ -83,25 +90,25 @@ Creating An Account
 
 Creating An Opportunity For The Account
     [tags]                    Account
-    Appstate                  salesforce.Home
-    salesforce.LaunchApp      Sales
+    Appstate                  Home
+    LaunchApp                 Sales
     ClickUntil                Recently Viewed             Accounts
     VerifyText                Salesforce
     VerifyText                Opportunities
 
     ClickUntil                Stage                       Opportunities
     ClickUntil                Opportunity Information     New
-    TypeText                  Opportunity Name            Safesforce Pace             anchor=Cancel
+    TypeText                  Opportunity Name            Safesforce Pace             anchor=Cancel   delay=2
     TypeText                  Search Accounts...          Salesforce                  check=False
     ClickText                 +12258443456789
-    salesforce.Picklist       Type                        New Business
+    Picklist                  Type                        New Business
     ClickText                 Close Date                  Opportunity Information
     ClickText                 Next Month
     ClickText                 Today
 
-    salesforce.Picklist       Stage                       Prospecting
+    Picklist                  Stage                       Prospecting
     TypeText                  Amount                      5000000
-    salesforce.Picklist       Lead Source                 Partner
+    Picklist                  Lead Source                 Partner
     TypeText                  Next Step                   Qualification
     TypeText                  Description                 This is first step
     ClickText                 Save                        partial_match=False         # Do not accept partial match, i.e. "Save All"
@@ -112,14 +119,14 @@ Creating An Opportunity For The Account
 
 Change status of opportunity
     [tags]                    status_change
-    Appstate                  salesforce.Home
+    Appstate                  Home
     ClickText                 Opportunities
     ClickText                 Safesforce Pace             delay=2                     # intentionally delay action - 2 seconds
     VerifyText                Contact Roles
 
     ClickText                 Show actions for this object
     ClickText                 Add Contact Roles
-    TypeText                  Search Contact              Tina    delay=2
+    TypeText                  Search Contacts...          Tina    delay=2
     ClickText                 Tina Smith
     ClickText                 Next                        delay=3
     ClickText                 Edit Role: Item 1
@@ -131,20 +138,20 @@ Change status of opportunity
     ClickText                 Mark Stage as Complete
     ClickText                 Opportunities
     ClickText                 Safesforce Pace             delay=2
-    salesforce.VerifyStage    Qualification               true
-    salesforce.VerifyStage    Prospecting                 false
+    VerifyStage               Qualification               true
+    VerifyStage               Prospecting                 false
 
 Create A Contact For The Account
     [tags]                    salesforce.Account
     Appstate                  Home
-    salesforce.LaunchApp      Sales
+    LaunchApp                 Sales
     ClickUntil                Recently Viewed             Accounts
     VerifyText                Salesforce
     VerifyText                Contacts
 
     ClickUntil                Email                       Contacts
     ClickUntil                Contact Information         New
-    salesforce.Picklist       Salutation                  Mr.
+    Picklist                  Salutation                  Mr.
     TypeText                  First Name                  Richard
     TypeText                  Last Name                   Brown
     TypeText                  Phone                       +00150345678134             anchor=Mobile
@@ -161,8 +168,8 @@ Create A Contact For The Account
 
 Delete Test Data
     [tags]                    Test data
-    Appstate                  salesforce.Home
-    salesforce.LaunchApp      Sales
+    Appstate                  Home
+    LaunchApp                 Sales
     ClickUntil                Recently Viewed             Accounts
 
     Set Suite Variable        ${data}                     Salesforce
@@ -176,3 +183,22 @@ Delete Test Data
     VerifyNoText              Growmore Pace
     VerifyNoText              Richard Brown
     VerifyNoText              Tina Smith
+
+Verifying elements
+    [Documentation]     misplacing of elements
+    Appstate            Home
+    ClickText           Edit nav items
+    UseModal            On
+    DragDrop            Home     Groups    dragtime=2s
+    ClickText           Save     Cancel
+    UseModal            Off
+    VerifyText          Home
+    ClickText           Edit nav items
+    UseModal            On
+    DragDrop            Home               Opportunities  dragtime=2s
+    ClickText           Save               Cancel
+    UseModal            Off
+    VerifyText          Home
+    ClickText           Opportunities
+    VerifyText          Opportunities      anchor=Home
+    VerifyText          Opportunities      anchor=Recently Viewed
