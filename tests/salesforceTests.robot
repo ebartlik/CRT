@@ -7,13 +7,14 @@ Suite Teardown                End suite
 *** Test Cases ***
 Entering A Lead
     [tags]                    Lead
-    Appstate                  Login
-    VerifyText                Home
+    Appstate                  Home
     LaunchApp                 Sales
 
-    ClickUntil                Recently Viewed             Leads
-    ClickUntil                Lead Information            New
-   # UseModal                  On                          # Only find fields from open modal dialog
+    ClickText                 Leads
+    VerifyText                Change Owner
+    ClickText                 New
+    VerifyText                Lead Information
+    UseModal                  On                          # Only find fields from open modal dialog
 
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
@@ -48,7 +49,7 @@ Converting A Lead To Opportunity-Account-Contact
     Appstate                  Home
     LaunchApp                 Sales
 
-    ClickUntil                Recently Viewed             Leads
+    ClickText                 Leads
     ClickText                 Tina Smith
 
     ClickUntil                Convert Lead                Convert
@@ -70,7 +71,7 @@ Creating An Account
     Appstate                  Home
     LaunchApp                 Sales
 
-    ClickUntil                Recently Viewed             Accounts
+    ClickText                 Accounts
     ClickUntil                Account Information         New
 
     TypeText                  Account Name                Salesforce                  anchor=Parent Account
@@ -92,7 +93,7 @@ Creating An Opportunity For The Account
     [tags]                    Account
     Appstate                  Home
     LaunchApp                 Sales
-    ClickUntil                Recently Viewed             Accounts
+    ClickText                 Accounts
     VerifyText                Salesforce
     VerifyText                Opportunities
 
@@ -145,7 +146,7 @@ Create A Contact For The Account
     [tags]                    salesforce.Account
     Appstate                  Home
     LaunchApp                 Sales
-    ClickUntil                Recently Viewed             Accounts
+    ClickText                 Accounts
     VerifyText                Salesforce
     VerifyText                Contacts
 
@@ -170,12 +171,12 @@ Delete Test Data
     [tags]                    Test data
     Appstate                  Home
     LaunchApp                 Sales
-    ClickUntil                Recently Viewed             Accounts
+    ClickText                 Accounts
 
     Set Suite Variable        ${data}                     Salesforce
-    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteData
+    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteAccounts
     Set Suite Variable        ${data}                     Growmore
-    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteData
+    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteAccounts
 
     ClickText                 Opportunities
     VerifyText                0 items
@@ -184,21 +185,10 @@ Delete Test Data
     VerifyNoText              Richard Brown
     VerifyNoText              Tina Smith
 
-Verifying elements
-    [Documentation]     misplacing of elements
-    Appstate            Home
-    ClickText           Edit nav items
-    UseModal            On
-    DragDrop            Home     Groups    dragtime=2s
-    ClickText           Save     Cancel
-    UseModal            Off
-    VerifyText          Home
-    ClickText           Edit nav items
-    UseModal            On
-    DragDrop            Home               Opportunities  dragtime=2s
-    ClickText           Save               Cancel
-    UseModal            Off
-    VerifyText          Home
-    ClickText           Opportunities
-    VerifyText          Opportunities      anchor=Home
-    VerifyText          Opportunities      anchor=Recently Viewed
+    # Delete Leads
+    ClickText                 Leads
+    VerifyText                Change Owner
+    Set Suite Variable        ${data}                     Tina Smith
+    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteLeads
+    Set Suite Variable        ${data}                     John Doe
+    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteLeads
