@@ -20,6 +20,7 @@ Entering A Lead
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
     Picklist                  Lead Status                 New
+    #UseModal                  On
     TypeText                  Phone                       +12234567858449             First Name
     TypeText                  Company                     Growmore                    Last Name
     TypeText                  Title                       Manager                     Address Information
