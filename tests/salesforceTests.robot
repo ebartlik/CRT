@@ -14,12 +14,12 @@ Entering A Lead
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
-    UseModal                  On                          # Only find fields from open modal dialog
+    #UseModal                  On                          # Only find fields from open modal dialog
 
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
-    Picklist                  Lead Status                 Open
+    Picklist                  Lead Status                 New
     TypeText                  Phone                       +12234567858449             First Name
     TypeText                  Company                     Growmore                    Last Name
     TypeText                  Title                       Manager                     Address Information
@@ -28,12 +28,12 @@ Entering A Lead
 
     Picklist                  Lead Source                 Partner
     ClickText                 Save                        partial_match=False
-    UseModal                  Off
+    #UseModal                  Off
     Sleep                     1
     
     ClickText                 Details
     VerifyField               Name                        Ms. Tina Smith
-    VerifyField               Lead Status                 Open
+    VerifyField               Lead Status                 New
     VerifyField               Phone                       +12234567858449
     VerifyField               Company                     Growmore
     VerifyField               Website                     https://www.growmore.com/
