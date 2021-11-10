@@ -39,7 +39,7 @@ Entering A Lead
     VerifyField               Company                     Growmore
     VerifyField               Website                     https://www.growmore.com/
 
-    ClickText                 Leads
+                 
     VerifyText                Tina Smith
     VerifyText                Manager
     VerifyText                Growmore
