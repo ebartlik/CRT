@@ -7,7 +7,7 @@ Suite Teardown                End suite
 *** Test Cases ***
 Entering A Lead
     [tags]                    Leads
-    Appstate                  Home
+    Appstate                  Login
     VerifyText                Home
 
     LaunchApp                 Sales
