@@ -7,20 +7,20 @@ Suite Teardown                End suite
 *** Test Cases ***
 Entering A Lead
     [tags]                    Lead
-    Appstate                  Home
+    Appstate                  Homes
     LaunchApp                 Sales
 
     ClickText                 Leads
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
-    #UseModal                  On                          # Only find fields from open modal dialog
+    UseModal                  On                          # Only find fields from open modal dialog
 
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
     Picklist                  Lead Status                 New
-    #UseModal                  On
+    
     TypeText                  Phone                       +12234567858449             First Name
     TypeText                  Company                     Growmore                    Last Name
     TypeText                  Title                       Manager                     Address Information
@@ -29,7 +29,7 @@ Entering A Lead
 
     Picklist                  Lead Source                 Partner
     ClickText                 Save                        partial_match=False
-    #UseModal                  Off
+    UseModal                  Off
     Sleep                     1
     
     ClickText                 Details
