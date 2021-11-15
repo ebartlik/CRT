@@ -6,16 +6,10 @@ Suite Teardown                End suite
 
 
 *** Test Cases ***
-Demo Test   
-                      
-    Appstate                  salesforce.Login
-    VerifyText                Home
-    ClickText                 Leads
+Demo Test               
+    VerifyText         Leads    anchor= 2     
 
-    ClickText    New
-    TypeText    First Name    Evan
-
-    ClickText                 Cancel
+   
 
 
 
