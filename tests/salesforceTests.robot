@@ -7,7 +7,7 @@ Suite Teardown                End suite
 *** Test Cases ***
 Entering A Lead
     [tags]                    Lead
-    Appstate                  Homes
+    Appstate                  Home
     LaunchApp                 Sales
 
     ClickText                 Leads
