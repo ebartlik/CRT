@@ -6,7 +6,7 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 Entering A Lead
-    [tags]                    Lead
+    [tags]                    Leads
     Appstate                  Login
     VerifyText                Home
 
@@ -16,7 +16,7 @@ Entering A Lead
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
-    UseModal                  On                          # Only find fields from open modal dialog
+    UseModal                  On                          
 
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
