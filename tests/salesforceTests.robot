@@ -6,11 +6,9 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 Entering A Lead
-    [tags]                    Lead
+    [tags]                    Leads
     Appstate                  Login
     VerifyText                Home
-
-    LaunchApp                 Sales
 
     ClickText                 Leads
     VerifyText                Change Owner
