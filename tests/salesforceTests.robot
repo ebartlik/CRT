@@ -9,8 +9,9 @@ Entering A Lead
     [tags]                    Leads
     Appstate                  Login
     VerifyText                Home
-
-    ClickText                 Leads
+    
+    Log                       SUCCESS
+    ClickText                 My Leads
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
@@ -47,7 +48,7 @@ Entering A Lead
 
 Converting A Lead To Opportunity-Account-Contact
     [tags]                    Lead
-    Appstate                  Home
+    Appstate                  Homes
     LaunchApp                 Sales
 
     ClickText                 Leads
