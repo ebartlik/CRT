@@ -7,8 +7,8 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 Demo Test               
-    VerifyText         Leads    anchor= 2     
-
+    VerifyText         Leads       
+   
    
 
 
