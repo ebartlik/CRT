@@ -10,7 +10,7 @@ Entering A Lead
     Appstate                  Login
     VerifyText                Home
     
-    ClickText                 Leads
+    ClickText                Leads        
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
