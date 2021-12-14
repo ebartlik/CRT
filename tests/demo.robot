@@ -6,8 +6,16 @@ Suite Teardown                End suite
 
 
 *** Test Cases ***
-Demo Test               
-    VerifyText         Leads       
+Enter a Lead               
+    ClickText                 Leads        
+    VerifyText                Change Owner
+    ClickText                 New
+    VerifyText                Lead Information
+    
+    Typetext                  First Name            Tina  
+
+
+
     
    
    
