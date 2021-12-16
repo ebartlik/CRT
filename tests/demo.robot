@@ -6,13 +6,14 @@ Suite Teardown                End suite
 
 
 *** Test Cases ***
-Enter a Lead               
+Enter a Lead     
+    Appstate                  Login          
     ClickText                 Leads        
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
     
-    Typetext                  First Name            Tina  
+   
 
 
 
