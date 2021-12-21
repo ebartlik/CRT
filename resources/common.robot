@@ -6,7 +6,7 @@ Library                   String
 
 *** Variables ***
 ${BROWSER}               chrome
-${username}              ebartlik+crtdemo@copado.com
+#${username}              ebartlik+crtdemo@copado.com
 ${login_url}             https://copadocrt.my.salesforce.com/           # Salesforce instance. NOTE: Should be overwritten in CRT variables
 ${home_url}              ${login_url}/lightning/page/home
 
