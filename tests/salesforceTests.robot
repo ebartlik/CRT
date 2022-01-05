@@ -170,8 +170,8 @@ Create A Contact For The Account
 
 Pairwise Example
     [Tags]             testgen          nwise=2
-    TypeText        First name     [John, Jane]
-    TypeText        Last name     [Johnson, Janeson]
+    TypeText        First Name     [John, Jane]
+    TypeText        Last Name     [Johnson, Jameson]
 Delete Test Data
     [tags]                    Test data
     Appstate                  Home
