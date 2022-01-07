@@ -14,8 +14,8 @@ Entering A Lead
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
-    UseModal                  On                          
 
+    UseModal                  On                          
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
@@ -31,6 +31,11 @@ Entering A Lead
     ClickText                 Save                        partial_match=False
     UseModal                  Off
     Sleep                     1
+    
+    ClickText                 Setup
+
+    
+
     
     ClickText                 Details
     VerifyField               Name                        Ms. Tina Smith
