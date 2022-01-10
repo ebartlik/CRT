@@ -11,7 +11,9 @@ Entering A Lead
     VerifyText                Home
     
     ClickText                 Leads        
-    VerifyText                Change Owner
+    VerifyText                Change Status    
+
+    
     ClickText                 New
     VerifyText                Lead Information
 
