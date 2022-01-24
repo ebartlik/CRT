@@ -10,10 +10,9 @@ Entering A Lead
     Appstate                  Login
     VerifyText                Home
     
-    ClickText                 Leads        
+    ClickText                 Leads           
     VerifyText                Change Status    
 
-    
     ClickText                 New
     VerifyText                Lead Information
 
