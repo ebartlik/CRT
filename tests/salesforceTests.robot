@@ -8,12 +8,14 @@ Suite Teardown                End suite
 Entering A Lead
     VerifyText                Home
     
-    ClickText                 Leads           
+    ClickText                 Leads        
+        
     VerifyText                Change Status    
 
     ClickText                 New
     VerifyText                Lead Information
 
+                        
     UseModal                  On                          
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
