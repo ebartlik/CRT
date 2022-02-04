@@ -30,12 +30,7 @@ Entering A Lead
     ClickText                 Save                        partial_match=False
     UseModal                  Off
     Sleep                     1
-    
-    ClickText                 Setup
 
-    
-
-    
     ClickText                 Details
     VerifyField               Name                        Ms. Tina Smith
     VerifyField               Lead Status                 New
