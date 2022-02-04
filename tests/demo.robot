@@ -6,11 +6,15 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 My Test     
-  ClickText    Opportunities
+  ClickText    Home
+    ClickText    Lead
     ClickText    New
-    TypeText     Probability (%)    100
-    TypeText     Amount             10000
+    TypeText     First Name    Evan
+    TypeText     Last Name     Bartlik
     ClickText    Save
+
+    ClickText    Chatter
+    VerifyText                 
 
     
     
