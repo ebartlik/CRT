@@ -9,7 +9,7 @@ Entering A Lead
     VerifyText                Home
     
     ClickText                 Leads        
-        
+    
     VerifyText                Change Status    
 
     ClickText                 New
@@ -18,6 +18,7 @@ Entering A Lead
                         
     UseModal                  On                          
     Picklist                  Salutation                  Ms.
+              
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
     Picklist                  Lead Status                 New
