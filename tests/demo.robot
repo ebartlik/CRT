@@ -6,16 +6,17 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 My Test     
-  ClickText    Home
-    ClickText    Lead
+  ClickText    Leads
     ClickText    New
     TypeText     First Name    Evan
     TypeText     Last Name     Bartlik
-    ClickText    Save
+    ClickText    Cancel        anchor=CancelEdit
 
-    ClickText    Chatter
-    VerifyText                 
+    VerifyText                 Leads    anchor=Recently Viewed
 
+    IF    
+        
+    END
     
     
     
