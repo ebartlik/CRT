@@ -30,7 +30,7 @@ Entering A Lead
     TypeText                  Website                     https://www.growmore.com/
 
     Picklist                  Lead Source                 Partner
-    ClickText                 Save                        partial_match=False
+    ClickText                 Save                        anchor=2
     UseModal                  Off
     Sleep                     1
 
