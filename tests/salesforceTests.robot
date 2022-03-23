@@ -10,7 +10,7 @@ Entering A Lead
     
     ClickText                 Leads        
     
-    VerifyText                Change Status    #update
+    VerifyText                Change Status    
 
     ClickText                 New
     VerifyText                Lead Information
