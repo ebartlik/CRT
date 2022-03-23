@@ -14,7 +14,6 @@ Entering A Lead
 
     ClickText                 New
     VerifyText                Lead Information
-
                         
     UseModal                  On                          
     Picklist                  Salutation                  Ms.
