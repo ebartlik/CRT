@@ -8,7 +8,7 @@ Suite Teardown                End suite
 Entering A Lead
     VerifyText                Home
     
-    ClickText                 Leads        
+    ClickText                 Leads
     
     VerifyText                Change Status    
 
