@@ -45,6 +45,8 @@ Entering A Lead
     VerifyText                Manager
     VerifyText                Growmore
 
+New Test
+
 
 Converting A Lead To Opportunity-Account-Contact
     [tags]                    Lead
