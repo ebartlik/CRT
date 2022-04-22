@@ -6,6 +6,8 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 Entering A Lead
+
+    
     VerifyText                Home
     
     ClickText                 Leads
@@ -46,6 +48,23 @@ Entering A Lead
     VerifyText                Growmore
 
 New Test
+     ClickText    Leads
+    ClickText    New
+    UseModal     On
+    VerifyText    New Lead
+    VerifyText    New Lead
+    PickList      Salutation    Mr.
+    PickList      Lead Status    Qualified
+    ClickText     First Name
+    TypeText      First Name     Evan
+    TypeText      Last Name      Bartlik
+    TypeText      Company        Copado
+    ClickText     Save 
+    UseModal      Off
+    ClickText     Home
+
+    
+    
 
 
 Converting A Lead To Opportunity-Account-Contact
