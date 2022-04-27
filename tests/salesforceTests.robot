@@ -6,24 +6,19 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 Entering A Lead
-
-    
-    VerifyText                Home
-    
+    [tags]                    Lead
+    Appstate                  Home
+    LaunchApp                 Sales
     ClickText                 Leads
-    
-    VerifyText                Change Status    
-
+    VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
-                        
-    UseModal                  On                          
+    UseModal                  On                          # Only find fields from open modal dialog
+
     Picklist                  Salutation                  Ms.
-              
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
     Picklist                  Lead Status                 New
-    
     TypeText                  Phone                       +12234567858449             First Name
     TypeText                  Company                     Growmore                    Last Name
     TypeText                  Title                       Manager                     Address Information
@@ -31,10 +26,10 @@ Entering A Lead
     TypeText                  Website                     https://www.growmore.com/
 
     Picklist                  Lead Source                 Partner
-    ClickText                 Save                        anchor=2
+    ClickText                 Save                        partial_match=False
     UseModal                  Off
     Sleep                     1
-
+    
     ClickText                 Details
     VerifyField               Name                        Ms. Tina Smith
     VerifyField               Lead Status                 New
@@ -42,29 +37,14 @@ Entering A Lead
     VerifyField               Company                     Growmore
     VerifyField               Website                     https://www.growmore.com/
 
-                 
+    # as an example, let's check Phone number format. Should be "+" and 14 numbers
+    ${phone_num}=             GetFieldValue               Phone
+    Should Match Regexp	      ${phone_num}	              ^[+]\\d{14}$
+    
+    ClickText                 Leads
     VerifyText                Tina Smith
     VerifyText                Manager
     VerifyText                Growmore
-
-New Test
-     ClickText    Leads
-    ClickText    New
-    UseModal     On
-    VerifyText    New Lead
-    VerifyText    New Lead
-    PickList      Salutation    Mr.
-    PickList      Lead Status    Qualified
-    ClickText     First Name
-    TypeText      First Name     Evan
-    TypeText      Last Name      Bartlik
-    TypeText      Company        Copado
-    ClickText     Save 
-    UseModal      Off
-    ClickText     Home
-
-    
-    
 
 
 Converting A Lead To Opportunity-Account-Contact
@@ -78,7 +58,7 @@ Converting A Lead To Opportunity-Account-Contact
     ClickUntil                Convert Lead                Convert
     ClickText                 Opportunity                 2
     TypeText                  Opportunity Name            Growmore Pace
-    ClickText                 Convert                     2
+    ClickUntil                 Your lead has been converted             Convert                     
     VerifyText                Your lead has been converted                            timeout=30
 
     ClickText                 Go to Leads
@@ -88,6 +68,7 @@ Converting A Lead To Opportunity-Account-Contact
     VerifyText                Growmore
     ClickText                 Contacts
     VerifyText                Tina Smith
+
 
 Creating An Account
     [tags]                    Account
@@ -111,6 +92,7 @@ Creating An Account
     ClickText                 Details
     VerifyText                Salesforce
     VerifyText                35,000
+
 
 Creating An Opportunity For The Account
     [tags]                    Account
@@ -141,6 +123,7 @@ Creating An Opportunity For The Account
     ClickText                 Opportunities
     VerifyText                Safesforce Pace
 
+
 Change status of opportunity
     [tags]                    status_change
     Appstate                  Home
@@ -164,6 +147,7 @@ Change status of opportunity
     ClickText                 Safesforce Pace             delay=2
     VerifyStage               Qualification               true
     VerifyStage               Prospecting                 false
+
 
 Create A Contact For The Account
     [tags]                    salesforce.Account
@@ -190,32 +174,12 @@ Create A Contact For The Account
     ClickText                 Contacts
     VerifyText                Richard Brown
 
-Pairwise Example
-    [Tags]             testgen          nwise=2
-    TypeText        First Name     [John, Jane]
-    TypeText        Last Name     [Johnson, Jameson]
-Delete Test Data
-    [tags]                    Test data
-    Appstate                  Home
-    LaunchApp                 Sales
-    ClickText                 Accounts
 
-    Set Suite Variable        ${data}                     Salesforce
-    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteAccounts
-    Set Suite Variable        ${data}                     Growmore
-    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteAccounts
 
-    ClickText                 Opportunities
-    VerifyText                0 items
-    VerifyNoText              Safesforce Pace
-    VerifyNoText              Growmore Pace
-    VerifyNoText              Richard Brown
-    VerifyNoText              Tina Smith
+#LoginAs Example
+    # [Documentation]           Example how to impersonate another user. Note: Admin rights needed
+     #...                       for the user who tries to impersonate another user
+     #Appstate                  Home
+     #LoginAs                   Chatter Expert
+    # VerifyText                Salesforce Chatter
 
-    # Delete Leads
-    ClickText                 Leads
-    VerifyText                Change Owner
-    Set Suite Variable        ${data}                     Tina Smith
-    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteLeads
-    Set Suite Variable        ${data}                     John Doe
-    RunBlock                  NoData                      timeout=180s                exp_handler=DeleteLeads
