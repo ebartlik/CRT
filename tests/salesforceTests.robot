@@ -6,14 +6,14 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 Entering A Lead
-    [tags]                    Lead
     VerifyText                Home
     ClickText                 Leads
+
     VerifyText                Change Owner
     ClickText                 New
     VerifyText                Lead Information
-    UseModal                  On                          # Only find fields from open modal dialog
 
+    UseModal                  On                          # Only find fields from open modal dialog
     Picklist                  Salutation                  Ms.
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
@@ -25,7 +25,7 @@ Entering A Lead
     TypeText                  Website                     https://www.growmore.com/
 
     Picklist                  Lead Source                 Partner
-    ClickText                 Save                        partial_match=False
+    ClickText                 Save                        anchor=2
     UseModal                  Off
     Sleep                     1
     
