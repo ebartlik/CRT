@@ -18,10 +18,10 @@ Entering A Lead
     TypeText                  First Name                  Tina
     TypeText                  Last Name                   Smith
     Picklist                  Lead Status                 New
-    TypeText                  Phone                       +12234567858449             First Name
-    TypeText                  Company                     Growmore                    Last Name
-    TypeText                  Title                       Manager                     Address Information
-    TypeText                  Email                       tina.smith@gmail.com        Rating
+    TypeText                  Phone                       +12234567858449             
+    TypeText                  Company                     Growmore                   
+    TypeText                  Title                       Manager                     
+    TypeText                  Email                       tina.smith@gmail.com       
     TypeText                  Website                     https://www.growmore.com/
 
     Picklist                  Lead Source                 Partner
@@ -40,7 +40,7 @@ Entering A Lead
 
 
 
-    
+
 
 
 Converting A Lead To Opportunity-Account-Contact
