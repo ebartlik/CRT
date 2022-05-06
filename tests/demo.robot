@@ -10,5 +10,6 @@ Suite Teardown                End suite
 
 *** Test Cases ***
 My Test
-    ClickText    Leads
+    ClickText         Opportunities
+        
     
