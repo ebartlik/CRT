@@ -15,6 +15,7 @@ My Test
     UseModal     On
     PickList     Lead Status    Qualified
     PickList     Salutation     Ms.
+    
 
     TypeText     First Name     Evan
     TypeText     Last Name      Bartlik
